@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {/*2*/
       title: 'Welcome to Flutter',
       home: Scaffold( /*5*/
         appBar: AppBar( /*6*/
-          title: Text('Welcome to Flutter'),
+          title: Text('Welcome to test'),
         ),
         body: Center( /*7*/
           child: Text('Hello World'),
