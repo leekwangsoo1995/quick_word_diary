@@ -1,55 +1,54 @@
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
 
-void main() => runApp(MyApp()); /*1*/
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Startup Name Generator',
-        home: RandomWords()
-    );
-  }
-}
-
-
-class RandomWordsState extends State<RandomWords> {
-  final _suggestions = <WordPair>[];
-  final _biggerFont = const TextStyle(fontSize: 18.0);
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Startup Name Generator'),
-      ),
-      body: _buildSuggestions(),
-    );
-  }
-  Widget _buildSuggestions() {
-    return ListView.builder(
-        padding: const EdgeInsets.all(16.0),
-        itemBuilder: /*1*/ (context, i) {
-          if (i.isOdd) return Divider(); /*2*/
-
-          final index = i ~/ 2; /*3*/
-          if (index >= _suggestions.length) {
-            _suggestions.addAll(generateWordPairs().take(10)); /*4*/
-          }
-          return _buildRow(_suggestions[index]); /*5*/
-        });
-  }
-  Widget _buildRow(WordPair pair) {
-    return ListTile(
-      title: Text(
-        pair.asPascalCase,
-        style: _biggerFont,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('ListView'),
+        ),
+        body: ListView(
+            children: [
+              _menuItem("メニュー1", Icon(Icons.settings)),
+              _menuItem("メニュー2", Icon(Icons.map)),
+              _menuItem("メニュー3", Icon(Icons.room)),
+              _menuItem("メニュー4", Icon(Icons.local_shipping)),
+              _menuItem("メニュー5", Icon(Icons.airplanemode_active)),
+            ]
+        ),
       ),
     );
   }
-}
 
-class RandomWords extends StatefulWidget {
-  @override
-  RandomWordsState createState() => new RandomWordsState();
+  Widget _menuItem(String title, Icon icon) {
+    return GestureDetector(
+      child:Container(
+          padding: EdgeInsets.all(8.0),
+          decoration: new BoxDecoration(
+              border: new Border(bottom: BorderSide(width: 1.0, color: Colors.grey))
+          ),
+          child: Row(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.all(10.0),
+                child:icon,
+              ),
+              Text(
+                title,
+                style: TextStyle(
+                    color:Colors.black,
+                    fontSize: 18.0
+                ),
+              ),
+            ],
+          )
+      ),
+      onTap: () {
+        print("onTap called.");
+      },
+    );
+  }
 }
