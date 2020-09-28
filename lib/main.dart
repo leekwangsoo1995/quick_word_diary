@@ -8,47 +8,14 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
-      home:FirstPage(),
-    );
-  }
-}
-
-class FirstPage extends StatelessWidget{
-  Widget build(BuildContext context){
-    return Scaffold(
-      appBar:AppBar(title:const Text('First Page')),
-      body:Center(
-        child:RaisedButton(
-          onPressed:(){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder:(context){
-                return SecondPage();
-            }),
-            );
-          },
-          child:Text('Next Page'),
-        ),
-      ),
-    );
-  }
-}
-
-
-class SecondPage extends StatelessWidget{
-  Widget build(BuildContext context){
-    return Scaffold(
-      appBar: AppBar(title:const Text('Second Page')),
-      body:Center(
-        child:RaisedButton(
-          onPressed:(){
-            Navigator.pop(context);
-          },
-          child:Text('Go Back'),
-        ),
-      ),
+      home:Text(
+        'Heeeeelloooo,  how are you?',
+        textAlign: TextAlign.center,
+        overflow: TextOverflow.ellipsis,
+        style:TextStyle(fontWeight: FontWeight.bold),
+      )
     );
   }
 }
