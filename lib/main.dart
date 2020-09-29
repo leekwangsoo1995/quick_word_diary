@@ -68,25 +68,36 @@ class _MyHomePageState extends State<MyHomePage> {
           Icon(Icons.share),
         ],
       ),
-      body: Container(
-        color: Colors.red,
-        child: Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Row(
-            //mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'You have pushed ',
+      body: Column(
+        children: <Widget>[
+          Container(
+            height:200,
+            color: Colors.red,
+            child: Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Row(
+                //mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'You have pushed ',
+                  ),
+                  Text('I think so'),
+                  Text(
+                    '$_counter',
+                    style: Theme.of(context).textTheme.display1,
+                  ),
+                ],
               ),
-              Text('I think so'),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.display1,
-              ),
-            ],
+            ),
           ),
-        ),
+          Container(
+            height:200,
+            color: Colors.blue,
+          ),
+        ],
       ),
+
+
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
