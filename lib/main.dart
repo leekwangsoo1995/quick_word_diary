@@ -68,34 +68,41 @@ class _MyHomePageState extends State<MyHomePage> {
           Icon(Icons.share),
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          Container(
-            height:200,
-            color: Colors.red,
-            child: Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: Row(
-                //mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'You have pushed ',
-                  ),
-                  Text('I think so'),
-                  Text(
-                    '$_counter',
-                    style: Theme.of(context).textTheme.display1,
-                  ),
-                ],
+      body:
+        Column(
+          children: <Widget>[
+            Container(
+              height:200,
+              color: Colors.red,
+              child: Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: Row(
+                  //mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'You have pushed ',
+                    ),
+                    Text('I think so'),
+                    Text(
+                      '$_counter',
+                      style: Theme.of(context).textTheme.display1,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Container(
-            height:200,
-            color: Colors.blue,
-          ),
-        ],
-      ),
+            Container(
+              child:RaisedButton(
+                child:Text('next'),
+                onPressed: (){
+                  //押したら反応するコードがhere...
+                },
+              ),
+              color: Colors.blue,
+            ),
+          ],
+        ),
+
 
 
       floatingActionButton: FloatingActionButton(
