@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quickworddiary/next_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -96,6 +97,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 child:Text('next'),
                 onPressed: (){
                   //押したら反応するコードがhere...
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => NextPage(),
+                      ),
+                  );
                 },
               ),
               color: Colors.blue,
