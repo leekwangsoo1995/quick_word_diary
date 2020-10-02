@@ -12,12 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      //home: MyHomePage(title: 'Flutter Demo Home Page'),
-      initialRoute: '/',
-      routes:{
-        '/':(context) => MyHomePage(),
-        '/second':(context)=>NextPage(),
-      }
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -53,6 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
+
+  String text = "aa";
 
   @override
   Widget build(BuildContext context) {
@@ -90,18 +87,22 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Container(
               child:RaisedButton(
-                child:Text('next'),
-                onPressed: (){
+                child:Text(text),
+                onPressed: () async{
                   //押したら反応するコードがhere...
-                /*  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => NextPage(),
+                  final result = await Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => NextPage('Lee'),
                       ),
-                  );*/
-                Navigator.pushNamed(context, '/second');
+                  );
+                  text = result;
+                  print(result);
                 },
               ),
               color: Colors.blue,
             ),
+            //Container(
+            //  child:Text('a'),
+            //),
           ],
         ),
 
