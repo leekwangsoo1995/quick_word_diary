@@ -100,9 +100,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               color: Colors.blue,
             ),
-            //Container(
-            //  child:Text('a'),
-            //),
+            Column(
+              children: <Widget>[
+                  Image.network('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
+              ],
+            ),
           ],
         ),
 
