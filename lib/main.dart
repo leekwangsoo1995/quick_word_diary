@@ -4,71 +4,104 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  final items = List<String>.generate(10000, (i) => "Item $i");
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primaryColor: Colors.white,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final items = ['lee','zee','kee'];
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("lee"),
-        actions: <Widget>[
-          Icon(Icons.add),
-          Icon(Icons.share),
-        ],
-      ),
-      body:Container(
-        width:double.infinity,
-        child:
-        ListView(
-          // This next line does the trick.
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            Container(
-              width: 160.0,
-              color: Colors.red,
+      home: Scaffold(
+        appBar: AppBar(
+          centerTitle: false,
+          leading: Icon(Icons.videocam),
+          title:Text('Youtube Demo'),
+          actions: <Widget>[
+            SizedBox(
+              width:44,
+              child: FlatButton(
+                child:Icon(Icons.search),
+                onPressed: (){
+                 //todo Write Pressed action
+                },
+              ),
             ),
-            Container(
-              width: 160.0,
-              color: Colors.blue,
-            ),
-            Container(
-              width: 160.0,
-              color: Colors.green,
-            ),
-            Container(
-              width: 160.0,
-              color: Colors.yellow,
-            ),
-            Container(
-              width: 160.0,
-              color: Colors.orange,
+            SizedBox(
+              width:44,
+              child: FlatButton(
+                child:Icon(Icons.more_vert),
+                onPressed: (){
+                  //todo Write Pressed action
+                },
+              ),
             ),
           ],
-        )
       ),
+        body:Container(
+          child:Column(
+            children: <Widget>[
+             Row(
+               children: [
+                 SizedBox(
+                   height:60,
+                   width:60,
+                   child:
+                       Image.network("https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/flutter-512.png"),
+                 ),
+                 SizedBox(
+                   width:8,
+                 ),
+                 Column(
+                   children:<Widget>[
+                    Text('youtube demo的な'),
+                       FlatButton(
+                         child:Row(
+                           children: [
+                             Icon(
+                                 Icons.video_call,
+                                     color:Colors.red,
+                             ),
+                             Text('登録する'),
+                           ],
+                         ),
+                         onPressed: (){
+                           //todo Write Pressed action
+                         },
+                     ),
+                   ],
+                 ),
+               ],
+             ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      contentPadding: EdgeInsets.all(2),
+                      leading:Image.network("https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/flutter-512.png"),
+                      title: Column(
+                        children: [
+                          Text('Flutter入門 completedaaaaa'),
+                          Row(
+                            children:<Widget>[
+                              Text('200回再生'),
+                              Text('5日前 '),
 
+                            ],
+                          ),
+                        ],
+                      ),
+                      trailing: Icon(Icons.more_vert),
+                    );
+                  },
+                ),
+              ),
+        ],
+          ),
+        ),
+      ),
     );
-// This trailing comma makes auto-formatting nicer for build methods.
   }
 }
+
