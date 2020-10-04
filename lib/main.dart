@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quickworddiary/next_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,18 +25,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  String text = "aa";
-  final myFocusNode = FocusNode();
-  final myController = TextEditingController();
-
+  final items = ['lee','zee','kee'];
   @override
   Widget build(BuildContext context) {
 
@@ -51,45 +39,36 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body:Container(
         width:double.infinity,
-        child:Column(
+        child:
+        ListView(
+          // This next line does the trick.
+          scrollDirection: Axis.horizontal,
           children: <Widget>[
-            TextFormField(
-              validator: (value){
-                if(value.isEmpty){
-                  return 'hey! you must complete text';
-                }
-                return null;
-              },
-              decoration: InputDecoration(
-                hintText: 'ここがヒントテキストだよ',
-              ),
-              onChanged: (text){
-                print('input text is :$text');
-              },
-
+            Container(
+              width: 160.0,
+              color: Colors.red,
             ),
-            TextField(
-              controller: myController,
-              focusNode: myFocusNode,
+            Container(
+              width: 160.0,
+              color: Colors.blue,
             ),
-            RaisedButton(
-                child:Text('Focus!!'),
-                onPressed:(){
-                  showDialog(
-                    context:context,
-                    builder:(context){
-                      return AlertDialog(
-                        content:Text('tt'),
-                      );
-                    },
-                  );
-                },
+            Container(
+              width: 160.0,
+              color: Colors.green,
+            ),
+            Container(
+              width: 160.0,
+              color: Colors.yellow,
+            ),
+            Container(
+              width: 160.0,
+              color: Colors.orange,
             ),
           ],
         )
+      ),
 
-    ),
-// This trailing comma makes auto-formatting nicer for build methods.
     );
+// This trailing comma makes auto-formatting nicer for build methods.
   }
 }
