@@ -62,59 +62,30 @@ class _MyHomePageState extends State<MyHomePage> {
           Icon(Icons.share),
         ],
       ),
-      body:
-        Column(
-          children: <Widget>[
-            Container(
-              height:200,
-              color: Colors.red,
-              child: Padding(
-                padding: const EdgeInsets.all(32.0),
-                child: Row(
-                  //mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'You have pushed ',
-                    ),
-                    Text('I think so'),
-                    Text(
-                      '$_counter',
-                      style: Theme.of(context).textTheme.display1,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              child:RaisedButton(
-                child:Text(text),
-                onPressed: () async{
-                  //押したら反応するコードがhere...
-                  final result = await Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => NextPage('Lee'),
+      body:Container(
+          width:double.infinity,
+          child:Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text('lee',
+              textAlign: TextAlign.end,
+              style: TextStyle(
+                fontSize: 30,
+                color:Colors.red,
+                fontWeight: FontWeight.w900,
+              ),),
+              DefaultTextStyle(
+                  style:
+                      TextStyle(
+                          color:Colors.green,
                       ),
-                  );
-                  text = result;
-                  print(result);
-                },
-              ),
-              color: Colors.blue,
-            ),
-            Column(
-              children: <Widget>[
-                  Image.network('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
-              ],
-            ),
-          ],
-        ),
-
-
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+                  child: Text('zee')
+              )
+            ],
+          )
+      ),
+// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
