@@ -1,9 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:quickworddiary/book_list_page.dart';
 import 'package:quickworddiary/main_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -32,7 +35,7 @@ class MyApp extends StatelessWidget {
                       // ここでなにか
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => BookList()),
+                        MaterialPageRoute(builder: (context) => BookListPage()),
                       );
                     },
                   ),
