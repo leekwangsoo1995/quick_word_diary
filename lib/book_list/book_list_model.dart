@@ -10,7 +10,7 @@ class BookListModel extends ChangeNotifier {
     await Firebase.initializeApp();
     final docs =
         await FirebaseFirestore.instance.collection('books').getDocuments();
-    final books = docs.documents.map((doc) => Book(doc['title'])).toList();
+    final books = docs.documents.map((doc) => Book(doc)).toList();
     this.books = books;
     notifyListeners();
   }
