@@ -3,6 +3,7 @@ import 'package:quickworddiary/book_list/book_list_page.dart';
 import 'package:quickworddiary/main_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quickworddiary/signup/signup_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
                       // ここでなにか
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => BookListPage()),
+                        MaterialPageRoute(builder: (context) => SignUpPage()),
                       );
                     },
                   ),
