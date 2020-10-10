@@ -27,6 +27,5 @@ class AddBookModel extends ChangeNotifier {
         'updatedAt': Timestamp.now(),
       },
     );
-    print(document);
   }
 }

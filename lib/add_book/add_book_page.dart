@@ -35,40 +35,10 @@ class AddBookPage extends StatelessWidget {
                   RaisedButton(
                       child: Text(isUpdate ? '更新する' : '追加'),
                       onPressed: () async {
-                        try {
-                          await model.addBookToFireStore();
-                          await showDialog<void>(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  title: Text('保存完了!'),
-                                  actions: <Widget>[
-                                    FlatButton(
-                                      child: Text('ok'),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                    ),
-                                  ],
-                                );
-                              });
-                          Navigator.of(context).pop();
-                        } catch (e) {
-                          showDialog<void>(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  title: Text(e.toString()),
-                                  actions: <Widget>[
-                                    FlatButton(
-                                      child: Text('ok'),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                    ),
-                                  ],
-                                );
-                              });
+                        if (isUpdate) {
+                          await updateBook(model, context);
+                        } else {
+                          await addBook(model, context);
                         }
                       }),
                 ],
@@ -78,5 +48,81 @@ class AddBookPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future addBook(AddBookModel model, BuildContext context) async {
+    try {
+      await model.addBookToFireStore();
+      await showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('保存完了!'),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('ok'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          });
+      Navigator.of(context).pop();
+    } catch (e) {
+      showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(e.toString()),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('ok'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          });
+    }
+  }
+
+  Future updateBook(AddBookModel model, BuildContext context) async {
+    try {
+      await model.updateBook(book);
+      await showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('更新しました。'),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('ok'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          });
+      Navigator.of(context).pop();
+    } catch (e) {
+      showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(e.toString()),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('ok'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          });
+    }
   }
 }
