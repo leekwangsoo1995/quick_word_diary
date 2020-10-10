@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quickworddiary/add_book/add_book_page.dart';
 import 'package:quickworddiary/book_list/book_list_model.dart';
+import 'package:quickworddiary/domain/book.dart';
 
 class BookListPage extends StatelessWidget {
   @override
@@ -40,6 +41,25 @@ class BookListPage extends StatelessWidget {
                             model.fetchBooks();
                           },
                         ),
+                        onLongPress: () async {
+                          await showDialog<void>(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text('${book.title}削除しますか?'),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                      child: Text('ok'),
+                                      onPressed: () async {
+                                        Navigator.of(context).pop();
+                                        await deleteBook(context, model, book);
+                                      },
+                                    ),
+                                  ],
+                                );
+                              });
+                          print('ohoho');
+                        },
                       ),
                     )
                     .toList();
@@ -70,5 +90,34 @@ class BookListPage extends StatelessWidget {
         }),
       ),
     );
+  }
+
+  Future deleteBook(
+      BuildContext context, BookListModel model, Book book) async {
+    try {
+      await _showDialog(context, '削除しますた');
+      await model.deleteBook(book);
+      model.fetchBooks();
+    } catch (e) {
+      await _showDialog(context, e.toString());
+    }
+  }
+
+  Future _showDialog(BuildContext context, String title) {
+    showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(title),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('ok'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
   }
 }
